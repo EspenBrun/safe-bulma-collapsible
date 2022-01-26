@@ -91,6 +91,122 @@ let containerBox (model: Model) (dispatch: Msg -> unit) =
         ]
     ]
 
+let collapsible =
+    Html.div [
+        prop.id "accordion_first"
+        prop.children [
+            Html.article [
+                prop.className "message"
+                prop.children [
+                    Html.div [
+                        prop.className "message-header"
+                        prop.children [
+                            Html.p [
+                                Html.text "Question 1"
+                                Html.a [
+                                    prop.custom ("data-action", "collapse")
+                                    prop.href "#collapsible-message-accordion-1"
+                                    prop.text "Collapse/Expand"
+                                ]
+                            ]
+                        ]
+                    ]
+                    Html.div [
+                        prop.classes [ "message-body"; "is-collapsible" ]
+                        prop.custom ("data-parent", "accordion_first")
+                        prop.id "collapsible-message-accordion-1"
+                        prop.children [
+                            Html.div [
+                                prop.className "message-body-content"
+                                prop.children [
+                                    Html.text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                                    Html.strong "Pellentesque risus mi"
+                                    Html.text ", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum "
+                                    Html.text " efficitur. Aenean ac "
+                                    Html.em "eleifend lacus"
+                                    Html.text ", in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem."
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            Html.article [
+                prop.className "message"
+                prop.children [
+                    Html.div [
+                        prop.className "message-header"
+                        prop.children [
+                            Html.p [
+                                Html.text "Question 2 "
+                                Html.a [
+                                    prop.custom ("data-action", "collapse")
+                                    prop.href "#collapsible-message-accordion-2"
+                                    prop.text "Collapse/Expand"
+                                ]
+                            ]
+                        ]
+                    ]
+                    Html.div [
+                        prop.classes [ "message-body"; "is-collapsible" ]
+                        prop.custom ("data-parent", "accordion_first")
+                        prop.id "collapsible-message-accordion-2"
+                        prop.children [
+                            Html.div [
+                                prop.className "message-body-content"
+                                prop.children [
+                                    Html.text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                                    Html.strong "Pellentesque risus mi"
+                                    Html.text ", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum "
+                                    Html.text " efficitur. Aenean ac "
+                                    Html.em "eleifend lacus"
+                                    Html.text ", in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem."
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            Html.article [
+                prop.className "message"
+                prop.children [
+                    Html.div [
+                        prop.className "message-header"
+                        prop.children [
+                            Html.p [
+                                Html.text "Question 3 "
+                                Html.a [
+                                    prop.custom ("data-action", "collapse")
+                                    prop.href "#collapsible-message-accordion-3"
+                                    prop.text "Collapse/Expand"
+                                ]
+                            ]
+                        ]
+                    ]
+                    Html.div [
+                        prop.classes [ "message-body"; "is-collapsible" ]
+                        prop.custom ("dataParent", "accordion_first")
+                        prop.id "collapsible-message-accordion-3"
+                        prop.children [
+                            Html.div [
+                                prop.className "message-body-content"
+                                prop.children [
+                                    Html.text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                                    Html.strong "Pellentesque risus mi"
+                                    Html.text ", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum "
+                                    Html.text " efficitur. Aenean ac "
+                                    Html.em "eleifend lacus"
+                                    Html.text ", in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem."
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+
+
 let view (model: Model) (dispatch: Msg -> unit) =
     Bulma.hero [
         hero.isFullHeight
@@ -115,8 +231,9 @@ let view (model: Model) (dispatch: Msg -> unit) =
                             Bulma.title [
                                 text.hasTextCentered
                                 prop.text "safe_bulma_collapsible"
+                                prop.className "make-red"
                             ]
-                            containerBox model dispatch
+                            collapsible
                         ]
                     ]
                 ]
