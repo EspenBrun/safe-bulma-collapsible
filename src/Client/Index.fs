@@ -185,7 +185,7 @@ let collapsible =
                     ]
                     Html.div [
                         prop.classes [ "message-body"; "is-collapsible" ]
-                        prop.custom ("dataParent", "accordion_first")
+                        prop.custom ("data-parent", "accordion_first")
                         prop.id "collapsible-message-accordion-3"
                         prop.children [
                             Html.div [
