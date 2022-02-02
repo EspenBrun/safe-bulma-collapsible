@@ -1,6 +1,7 @@
 module Index
 
 open Elmish
+open Fable.Core
 open Fable.Remoting.Client
 open Shared
 
@@ -95,8 +96,18 @@ let containerBox (model: Model) (dispatch: Msg -> unit) =
 open Fable.Core.JsInterop
 importAll "bulma/bulma.sass" // confirmed imported here: styles dissapears when commented out
 importAll "@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css" // confirmed imported here: if I add a style to the min.css, the style is applied
-importAll "@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js" // console error if mispelled, but nothing works yet
-
+let bulmaCollapsible: obj = importDefault "@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js" // console error if mispelled, but nothing works yet
+bulmaCollapsible?attach() |> ignore
+//
+//type BulmaCollapsible<'T> =
+//  abstract value: 'T with get, set
+//  abstract isAwesome: unit -> bool
+//type BulmaCollapsibleStatic =
+//  abstract Attach: string -> BulmaCollapsible<'T> list
+//
+//[<ImportDefault("@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js")>]
+//let MyClass : BulmaCollapsibleStatic = jsNative
+//let lol = MyClass.Attach("#collapsible-message-accordion-1")
 let collapsible =
     Html.div [
         prop.id "accordion_first"
