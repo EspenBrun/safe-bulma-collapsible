@@ -206,6 +206,9 @@ let collapsible =
         ]
     ]
 
+// These lines does not do anything?
+open Fable.Core.JsInterop
+let bulmaCollapsible: obj = importDefault "@creativebulma/bulma-collapsible"
 
 let view (model: Model) (dispatch: Msg -> unit) =
     Bulma.hero [
