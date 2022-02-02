@@ -167,36 +167,81 @@ let collapsible =
                     ]
                 ]
             ]
-            Html.article [
-                prop.className "message"
+        ]
+    ]
+
+let collapsible2 =
+    Html.div [
+        prop.className "card"
+        prop.children [
+            Html.header [
+                prop.className "card-header"
                 prop.children [
-                    Html.div [
-                        prop.className "message-header"
+                    Html.p [
+                        prop.className "card-header-title"
+                        prop.text "Card title "
+                    ]
+                    Html.a [
+                        prop.ariaLabel "more options"
+                        prop.classes [ "card-header-icon"; "is-hidden-fullscreen" ]
+                        prop.custom ("data-action", "collapse")
+                        prop.href "#collapsible-card"
                         prop.children [
-                            Html.p [
-                                Html.text "Question 3 "
-                                Html.a [
-                                    prop.custom ("data-action", "collapse")
-                                    prop.href "#collapsible-message-accordion-3"
-                                    prop.text "Collapse/Expand"
+                            Html.span [
+                                prop.className "icon"
+                                prop.children [
+                                    Html.i [
+                                        prop.classes [ "fas"; "fa-angle-down" ]
+                                        prop.custom("aria-hidden", "true")
+                                    ]
                                 ]
                             ]
                         ]
                     ]
+                ]
+            ]
+            Html.div [
+                prop.classes [ "is-collapsible"; "is-active" ]
+                prop.id "collapsible-card"
+                prop.children [
                     Html.div [
-                        prop.classes [ "message-body"; "is-collapsible" ]
-                        prop.custom ("data-parent", "accordion_first")
-                        prop.id "collapsible-message-accordion-3"
+                        prop.className "card-content"
                         prop.children [
-                            Html.div [
-                                prop.className "message-body-content"
+                            Html.p [
+                                prop.classes [ "title"; "is-4" ]
+                                prop.text "“There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.” "
+                            ]
+                            Html.p [
+                                prop.classes [ "subtitle"; "is-5" ]
+                                prop.text " Jeff Atwood"
+                            ]
+                        ]
+                    ]
+                    Html.footer [
+                        prop.className "card-footer"
+                        prop.children [
+                            Html.p [
+                                prop.className "card-footer-item"
                                 prop.children [
-                                    Html.text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                                    Html.strong "Pellentesque risus mi"
-                                    Html.text ", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum "
-                                    Html.text " efficitur. Aenean ac "
-                                    Html.em "eleifend lacus"
-                                    Html.text ", in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem."
+                                    Html.span [
+                                        Html.text "View on "
+                                        Html.a [
+                                            prop.href "https://twitter.com/codinghorror/status/506010907021828096"
+                                            prop.text "Twitter"
+                                        ]
+                                    ]
+                                ]
+                            ]
+                            Html.p [
+                                prop.className "card-footer-item"
+                                prop.children [
+                                    Html.span [
+                                        Html.text "Share on "
+                                        Html.a [
+                                            prop.href "#"
+                                            prop.text "Facebook"
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]
@@ -204,8 +249,7 @@ let collapsible =
                 ]
             ]
         ]
-    ]
-
+   ]
 // These lines does not do anything?
 open Fable.Core.JsInterop
 let bulmaCollapsible: obj = importDefault "@creativebulma/bulma-collapsible"
@@ -237,6 +281,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                                 prop.className "make-red"
                             ]
                             collapsible
+                            collapsible2
                         ]
                     ]
                 ]
