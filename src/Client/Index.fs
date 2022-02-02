@@ -91,6 +91,12 @@ let containerBox (model: Model) (dispatch: Msg -> unit) =
         ]
     ]
 
+// These lines does not do anything?
+open Fable.Core.JsInterop
+importAll "bulma/bulma.sass" // confirmed imported here: styles dissapears when commented out
+importAll "@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css" // confirmed imported here: if I add a style to the min.css, the style is applied
+importAll "@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js" // console error if mispelled, but nothing works yet
+
 let collapsible =
     Html.div [
         prop.id "accordion_first"
@@ -250,10 +256,6 @@ let collapsible2 =
             ]
         ]
    ]
-// These lines does not do anything?
-open Fable.Core.JsInterop
-let bulmaCollapsible: obj = importDefault "@creativebulma/bulma-collapsible"
-
 let view (model: Model) (dispatch: Msg -> unit) =
     Bulma.hero [
         hero.isFullHeight
